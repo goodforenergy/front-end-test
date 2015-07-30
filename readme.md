@@ -8,7 +8,7 @@ There's an important table of **recent appointments** in our software.  Unfortun
 
 Our designer has just finished some designs for this table and has produced some PSDs that we need implemented (they are in this repo).
 
-The table needs to be responsive and accessible. There is a PSD for desktop view and a PSD for mobile view too.
+The table needs to be responsive and accessible. There is a PSD for wide view and a PSD for narrow view too.
 
 ## What you should do
 
