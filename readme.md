@@ -16,7 +16,7 @@ First, clone this repo (don't fork it).
 
 You'll find an `index.html` in this repo, it has the current version of the table.
 
-Improve the table in there so that it implements the designs in the PSDs (there are jpeg versions too).
+Improve the table in there so that it implements the designs in the PSDs (there are png versions too).
 
 ## Limitations
 
