@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script>
+      var data = [];
+      data.push({"when":"1/1/2011", "where": "Melbourne", "type": "Standard", "practitioner": "Johnny"});
+      data.push({"when":"2/2/2012", "where": "Sydney", "type": "Standard", "practitioner": "Alfred"});
+      data.push({"when":"3/3/2013", "where": "Hobart", "type": "Initial", "practitioner": "Mary"});
+
+      var generic_log_info = "\
+        <p>Butcher 90's PBR&B Marfa Banksy selvage gluten-free, next level kale chips small batch cray swag umami. Bespoke chia fashion axe meh, brunch drinking vinegar street art Vice. Taxidermy migas sriracha tote bag, semiotics Odd Future Blue Bottle Echo Park Truffaut YOLO typewriter occupy locavore. Forage heirloom street art Banksy readymade mlkshk Thundercats tofu pour-over, drinking vinegar 3 wolf moon. Yr mixtape beard, organic hoodie fanny pack tote bag. Cornhole irony small batch listicle, fingerstache Schlitz actually gluten-free fap artisan. Bicycle rights occupy try-hard, Odd Future quinoa tofu cold-pressed Truffaut.</p>\
+        <p>Hella jean shorts flannel, fap Helvetica aesthetic XOXO Williamsburg ennui. Marfa blog banh mi Vice. Godard lomo Williamsburg, cred +1 ugh food truck ennui mixtape bicycle rights forage church-key. Wayfarers bespoke shabby chic, fashion axe before they sold out four dollar toast twee mustache brunch Intelligentsia hoodie kitsch. Gentrify sartorial American Apparel, butcher migas 90's wolf Banksy mixtape viral. Portland distillery biodiesel Wes Anderson, blog stumptown meh mlkshk pickled farm-to-table jean shorts yr put a bird on it. Kickstarter post-ironic mustache, locavore letterpress cornhole put a bird on it.</p>\
+        <p>Bicycle rights migas readymade, brunch Austin flexitarian forage cold-pressed single-origin coffee American Apparel meditation messenger bag vinyl. Blog polaroid single-origin coffee, ethical semiotics sriracha Shoreditch tilde chambray. Cardigan Vice church-key food truck distillery irony gentrify Helvetica. Brunch Carles PBR lumbersexual, PBR&B biodiesel vinyl XOXO pork belly VHS narwhal roof party 8-bit. Pop-up craft beer Williamsburg Bushwick. Lumbersexual meggings leggings tilde chambray, selfies wayfarers Helvetica kogi art party pickled freegan Schlitz Banksy. Polaroid tattooed messenger bag Brooklyn scenester butcher.</p>\
+        <p>Portland PBR plaid tilde salvia, scenester farm-to-table vegan 8-bit Banksy butcher drinking vinegar Marfa 3 wolf moon. Neutra mumblecore irony mixtape photo booth XOXO, plaid kitsch shabby chic you probably haven't heard of them raw denim Wes Anderson organic. Austin Bushwick fanny pack literally, 90's yr vegan. Sustainable Thundercats biodiesel cred cornhole Tumblr. Hoodie fap skateboard, synth cray fanny pack locavore viral. 3 wolf moon flexitarian lomo trust fund. Lomo PBR&B trust fund, tattooed Brooklyn ennui four dollar toast Thundercats.</p>\
+        ";
+
+      function show_log(i) {
+        document.getElementById('log' + i).style.display = 'table-row';
+        document.getElementById('show' + i).style.display = 'none';
+        document.getElementById('hide' + i).style.display = 'inline';
+      }
+
+      function hide_log(i) {
+        document.getElementById('log' + i).style.display = 'none';
+        document.getElementById('show' + i).style.display = 'inline';
+        document.getElementById('hide' + i).style.display = 'none';
+      }
+    </script>
+    <style>
+      td { border: solid 1px black; padding: 3px; }
+    </style>
+  </head>
+  <body>
+    <table summary="Recent appointments for Mr Patient." cellpadding="0" cellspacing="0">
+      <tr>
+        <th>When</th>
+        <th>Where</th>
+        <th>Type</th>
+        <th>Practitioner</th>
+        <th>Changes</th>
+      </tr>
+      <script>
+        for(var i = 0; i < data.length; i++){
+          document.write('<tr>');
+          var obj = data[i];
+          for(var key in obj){
+              document.write('<td>' + obj[key] + '</td>');
+          }
+          document.write('<td>');
+          document.write('<input id="show' + i + '" type="button" value="View log" onclick="show_log(\'' + i + '\');" />');
+          document.write('<input id="hide' + i + '" type="button" value="Hide log" onclick="hide_log(\'' + i + '\');" style="display: none;" />');
+          document.write('</td>');
+          document.write('</tr>');
+
+          // Log information
+          document.write('<tr id="log' + i + '" style="display: none;">');
+          document.write('<td colspan="5">' + generic_log_info + '</td>');
+          document.write('</tr>');
+        }
+      </script>
+    </table>
+  </body>
+</html>
