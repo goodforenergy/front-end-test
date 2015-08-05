@@ -25,18 +25,24 @@
 		<script src="js/moment.min.js"></script>
 		<script id="table-content-templ" type="text/x-handlebars-template">
 			{{#each records}}
-				<tr>
+				<tr class="rg-table-content-row">
 					<td data-title="When" class="rg-table-highlight">{{when}}</td>
 					<td data-title="Where">{{where}}</td>
 					<td data-title="Type">{{type}}</td>
 					<td data-title="Practitioner">{{practitioner}}</td>
 					<td data-title="Changes">
 						<button class="rg-table-toggle-log">View log</button>
-						<span class="rg-table-log-content">{{logInfo}}</span>
 					</td>
 				</tr>
 			{{/each}}
 		</script>
+
+		<script id="table-log-row-templ" type="text/x-handlebars-template">
+			<tr class="rg-table-log-row">
+				<td colspan="5">{{logInfo}}</td>
+			</tr>
+		</script>
+
 		<script src="js/table.js"></script>
 	</body>
 </html>

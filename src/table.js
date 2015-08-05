@@ -35,22 +35,19 @@
 				when: moment('1/1/2011', dateParseFormat).format(datePrintFormat),
 				where: 'Melbourne',
 				type: 'Standard',
-				practitioner: 'Johnny',
-				logInfo: genericLogInfo
+				practitioner: 'Johnny'
 			},
 			{
 				when: moment('2/2/2012', dateParseFormat).format(datePrintFormat),
 				where: 'Sydney',
 				type: 'Standard',
-				practitioner: 'Alfred',
-				logInfo: genericLogInfo
+				practitioner: 'Alfred'
 			},
 			{
 				when: moment('3/3/2013', dateParseFormat).format(datePrintFormat),
 				where: 'Hobart',
 				type: 'Initial',
-				practitioner: 'Mary',
-				logInfo: genericLogInfo
+				practitioner: 'Mary'
 			}
 		],
 
@@ -58,7 +55,10 @@
 	hideLogLabel = 'Hide log',
 
 	generateTableContent = Handlebars.compile($('#table-content-templ').html()),
-	generatedTable = generateTableContent({records: records});
+	generateLogContent = Handlebars.compile($('#table-log-row-templ').html()),
+
+	generatedTable = generateTableContent({records: records}),
+	generatedLogContent = generateLogContent({logInfo: genericLogInfo});
 
 	// Append compiled handlebars template
 	$('.rg-table-body').append(generatedTable);
@@ -66,8 +66,21 @@
 	$('.rg-table-toggle-log').on('click', function(e) {
 		e.preventDefault();
 
+		var $button = $(this),
+			opening = $button.text() === viewLogLabel,
+
+			parentRow;
+
 		// Change label
-		$(this).text($(this).text() === viewLogLabel ? hideLogLabel : viewLogLabel);
+		$button.text(opening ? hideLogLabel : viewLogLabel);
+
+		parentRow = $button.parents('.rg-table-content-row');
+
+		if (opening) {
+			parentRow.after(generatedLogContent);
+		} else {
+			parentRow.next('.rg-table-log-row').remove();
+		}
 
 		$(this).toggleClass('rg-table-log-showing');
 
