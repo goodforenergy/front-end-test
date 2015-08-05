@@ -1,4 +1,4 @@
-/*global Handlebars, $*/
+/*global Handlebars, $, moment*/
 'use strict';
 
 (function($) {
@@ -27,23 +27,26 @@
 		' Tumblr. Hoodie fap skateboard, synth cray fanny pack locavore viral. 3 wolf moon flexitarian lomo trust fund.' +
 		' Lomo PBR&B trust fund, tattooed Brooklyn ennui four dollar toast Thundercats.',
 
+		dateParseFormat = 'DD-MM-YYYY',
+		datePrintFormat = 'ddd, Do MMM YYYY h.mma',
+
 		records = [
 			{
-				when: '1/1/2011',
+				when: moment('1/1/2011', dateParseFormat).format(datePrintFormat),
 				where: 'Melbourne',
 				type: 'Standard',
 				practitioner: 'Johnny',
 				logInfo: genericLogInfo
 			},
 			{
-				when: '2/2/2012',
+				when: moment('2/2/2012', dateParseFormat).format(datePrintFormat),
 				where: 'Sydney',
 				type: 'Standard',
 				practitioner: 'Alfred',
 				logInfo: genericLogInfo
 			},
 			{
-				when: '3/3/2013',
+				when: moment('3/3/2013', dateParseFormat).format(datePrintFormat),
 				where: 'Hobart',
 				type: 'Initial',
 				practitioner: 'Mary',
@@ -58,7 +61,7 @@
 	generatedTable = generateTableContent({records: records});
 
 	// Append compiled handlebars template
-	$('.rg-table-header').after(generatedTable);
+	$('.rg-table-body').append(generatedTable);
 
 	$('.rg-table-toggle-log').on('click', function(e) {
 		e.preventDefault();

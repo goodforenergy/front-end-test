@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 
 	destRoot = './build';
 
-gulp.task('build', ['html', 'js', 'libjs', 'sass']);
+gulp.task('build', ['html', 'js', 'libjs', 'css', 'libcss']);
 
 gulp.task('html', function() {
 	return gulp.src('src/**/*.html')
@@ -35,12 +35,17 @@ gulp.task('libjs', function() {
 		.pipe(gulp.dest(destRoot + '/js'));
 });
 
-gulp.task('sass', function() {
+gulp.task('css', function() {
 	return gulp.src('src/**/*.scss')
 		.pipe(sass())
 		.pipe(prefix('last 2 versions', 'ie 9'))
 		.pipe(gulpif(argv.prod, minifyCSS()))
 		.pipe(pixrem())
+		.pipe(gulp.dest(destRoot + '/css'));
+});
+
+gulp.task('libcss', function() {
+	return gulp.src('src/lib/*.css')
 		.pipe(gulp.dest(destRoot + '/css'));
 });
 
@@ -57,7 +62,7 @@ gulp.task('serve', ['build'], function() {
 });
 
 gulp.task('watch', ['serve'], function() {
-	gulp.watch('src/**/*.scss', ['sass']);
+	gulp.watch('src/**/*.scss', ['css']);
 	gulp.watch('src/**/*.js', ['js']);
 	gulp.watch('src/**/*.html', ['html']);
 });

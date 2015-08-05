@@ -1,28 +1,36 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" type="text/css" href="css/normalise.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 	</head>
 	<body>
-		<table summary="Recent appointments for Mr Patient." cellpadding="0" cellspacing="0">
-			<tr class="rg-table-header">
-				<th>When</th>
-				<th>Where</th>
-				<th>Type</th>
-				<th>Practitioner</th>
-				<th>Changes</th>
-			</tr>
-		</table>
+		<div class="rg-table-wrapper">
+			<table class="rg-table" summary="Recent appointments for Mr Patient.">
+				<thead>
+					<tr>
+						<th scope="col">When</th>
+						<th scope="col">Where</th>
+						<th scope="col">Type</th>
+						<th scope="col">Practitioner</th>
+						<th scope="col">Changes</th>
+					</tr>
+				</thead>
+				<tbody class="rg-table-body"></tbody>
+			</table>
+		</div>
+
 		<script src="js/jquery-1.11.3.min.js"></script>
 		<script src="js/handlebars-v3.0.3.js"></script>
+		<script src="js/moment.min.js"></script>
 		<script id="table-content-templ" type="text/x-handlebars-template">
 			{{#each records}}
 				<tr>
-					<td>{{when}}</td>
-					<td>{{where}}</td>
-					<td>{{type}}</td>
-					<td>{{practitioner}}</td>
-					<td>
+					<td data-title="When" class="rg-table-highlight">{{when}}</td>
+					<td data-title="Where">{{where}}</td>
+					<td data-title="Type">{{type}}</td>
+					<td data-title="Practitioner">{{practitioner}}</td>
+					<td data-title="Changes">
 						<button class="rg-table-toggle-log">View log</button>
 						<span class="rg-table-log-content">{{logInfo}}</span>
 					</td>
