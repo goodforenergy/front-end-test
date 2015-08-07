@@ -26,7 +26,7 @@ body {
 	color: rgba(58, 58, 58, 1);
 }
 
-.rg-secondary-button {
+.rg-log-button {
 	display: inline-block;
 	min-width: 100px;
 
@@ -41,10 +41,21 @@ body {
 	border-radius: 4px;
 	background-color: #f1f1f1;
 
-	.fa {
+	.rg-log-button-icon {
 		font-size: 1.3em;
 		float: right;
 	}
+}
+
+.rg-button-toggled {
+	color: white;
+	border: 1px solid #1680BF;
+	background-color: #1C94DC;
+}
+
+.rg-highlight {
+	color: rgba(28, 148, 220, 1);
+	font-weight: 700;
 }
 
 // Table styling
@@ -108,7 +119,6 @@ body {
 	}
 
 	tr {
-
 		@media (min-width: $max-mobile) {
 			// Undo display: block
 			display: table-row;
@@ -158,6 +168,18 @@ body {
 				// Undo display: block
 				display: table-row;
 			}
+
+			&.rg-table-row-expanded {
+				border-bottom: none;
+			}
+		}
+
+		.rg-table-log-row {
+			td {
+				height: 120px;
+
+				border-top: none;
+			}
 		}
 
 		// Can't use nth-of-type due to dynamically inserted log rows
@@ -166,12 +188,37 @@ body {
 		}
 
 		td {
+			position: relative;
+			height: 30px;
+
 			text-align: right;
 
 			@media (min-width: $max-mobile) {
 				text-align: left;
 
 				border-top: 1px solid rgba(241, 241, 241, 1);
+			}
+
+			&.rg-table-expandy-cell {
+				// Works like min-height in a td
+				height: 50px;
+
+				// To vertically align the changes text with the button
+				&:before {
+					display: inline-block;
+					line-height: 31px;
+				}
+			}
+
+			.rg-table-cell-info {
+				position: absolute;
+				left: 0;
+				margin-left: 150px;
+
+				@media (min-width: $max-mobile) {
+					margin-left: 0;
+					position: inherit;
+				}
 			}
 		}
 
@@ -192,26 +239,11 @@ body {
 	}
 }
 
-.rg-table-highlight {
-	color: rgba(28, 148, 220, 1);
-	font-weight: 700;
-}
-
-// Log Styling
+// Log Box Styling
 
 // Hidden by default
 .rg-table-log-content {
 	display: none;
-}
-
-.rg-table-expandy-cell {
-	// Works like min-height
-	height: 50px;
-}
-
-.rg-table-expandy-cell:before {
-	line-height: 31px;
-	display: inline-block;
 }
 
 .rg-table-log-box {
@@ -223,36 +255,4 @@ body {
 	border: 1px solid #D5D5D5;
 	border-radius: 4px;
 	box-shadow: inset 0 15px 4px -8px #F4FAFD, inset 0 -15px 4px -8px #F4FAFD;
-}
-
-.rg-button-toggled {
-	color: white;
-	border: 1px solid #1680BF;
-	background-color: #1C94DC;
-}
-
-.rg-table tbody tr.rg-table-row-expanded {
-	border-bottom: none;
-}
-
-td {
-	position: relative;
-	height: 30px;
-}
-
-.rg-table-cell-info {
-	position: absolute;
-	left: 0;
-	margin-left: 150px;
-
-	@media (min-width: $max-mobile) {
-		margin-left: 0;
-		position: inherit;
-	}
-}
-
-.rg-table tbody .rg-table-log-row td {
-	height: 120px;
-
-	border-top: none;
 }

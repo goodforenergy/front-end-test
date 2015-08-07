@@ -15,7 +15,7 @@ body {
   font-size: 13px;
   color: #3a3a3a; }
 
-.rg-secondary-button {
+.rg-log-button {
   display: inline-block;
   min-width: 100px;
   padding: 6px 12px 6px 12px;
@@ -26,9 +26,18 @@ body {
   border: 1px solid #d5d5d5;
   border-radius: 4px;
   background-color: #f1f1f1; }
-  .rg-secondary-button .fa {
+  .rg-log-button .rg-log-button-icon {
     font-size: 1.3em;
     float: right; }
+
+.rg-button-toggled {
+  color: white;
+  border: 1px solid #1680BF;
+  background-color: #1C94DC; }
+
+.rg-highlight {
+  color: #1c94dc;
+  font-weight: 700; }
 
 .rg-table {
   width: 100%; }
@@ -96,14 +105,34 @@ body {
     @media (min-width: 45em) {
       .rg-table tbody tr {
         display: table-row; } }
+    .rg-table tbody tr.rg-table-row-expanded {
+      border-bottom: none; }
+  .rg-table tbody .rg-table-log-row td {
+    height: 120px;
+    border-top: none; }
   .rg-table tbody .rg-table-row-odd {
     background-color: #f8f8f8; }
   .rg-table tbody td {
+    position: relative;
+    height: 30px;
     text-align: right; }
     @media (min-width: 45em) {
       .rg-table tbody td {
         text-align: left;
         border-top: 1px solid #f1f1f1; } }
+    .rg-table tbody td.rg-table-expandy-cell {
+      height: 50px; }
+      .rg-table tbody td.rg-table-expandy-cell:before {
+        display: inline-block;
+        line-height: 31px; }
+    .rg-table tbody td .rg-table-cell-info {
+      position: absolute;
+      left: 0;
+      margin-left: 150px; }
+      @media (min-width: 45em) {
+        .rg-table tbody td .rg-table-cell-info {
+          margin-left: 0;
+          position: inherit; } }
   .rg-table tbody td[data-title]:before {
     float: left;
     content: attr(data-title);
@@ -114,19 +143,8 @@ body {
       .rg-table tbody td[data-title]:before {
         content: none; } }
 
-.rg-table-highlight {
-  color: #1c94dc;
-  font-weight: 700; }
-
 .rg-table-log-content {
   display: none; }
-
-.rg-table-expandy-cell {
-  height: 50px; }
-
-.rg-table-expandy-cell:before {
-  line-height: 31px;
-  display: inline-block; }
 
 .rg-table-log-box {
   display: inline-block;
@@ -137,28 +155,3 @@ body {
   border: 1px solid #D5D5D5;
   border-radius: 4px;
   box-shadow: inset 0 15px 4px -8px #F4FAFD, inset 0 -15px 4px -8px #F4FAFD; }
-
-.rg-button-toggled {
-  color: white;
-  border: 1px solid #1680BF;
-  background-color: #1C94DC; }
-
-.rg-table tbody tr.rg-table-row-expanded {
-  border-bottom: none; }
-
-td {
-  position: relative;
-  height: 30px; }
-
-.rg-table-cell-info {
-  position: absolute;
-  left: 0;
-  margin-left: 150px; }
-  @media (min-width: 45em) {
-    .rg-table-cell-info {
-      margin-left: 0;
-      position: inherit; } }
-
-.rg-table tbody .rg-table-log-row td {
-  height: 120px;
-  border-top: none; }

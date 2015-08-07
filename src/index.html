@@ -29,7 +29,7 @@
 		<script id="table-content-templ" type="text/x-handlebars-template">
 			{{#each records}}
 				<tr class="{{rowClassGenerator @index}}">
-					<td data-title="When" class="rg-table-highlight">
+					<td data-title="When" class="rg-highlight">
 						<span class="rg-table-cell-info">{{when}}</span>
 					</td>
 					<td data-title="Where">
@@ -43,7 +43,7 @@
 					</td>
 					<td data-title="Changes" class="rg-table-expandy-cell">
 						<span class="rg-table-cell-info">
-						<button class="rg-table-toggle-log rg-secondary-button"><span class="rg-log-button-text">View log</span><i class="fa fa-angle-down"></i></button>
+						<button class="rg-log-button"><span class="rg-log-button-text">View log</span><i class="rg-log-button-icon fa fa-angle-down"></i></button>
 						</span>
 					</td>
 				</tr>

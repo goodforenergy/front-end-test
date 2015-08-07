@@ -67,12 +67,12 @@
 	// Append compiled handlebars template
 	$('.rg-table-body').append(generatedTable);
 
-	$('.rg-table-toggle-log').on('click', function(e) {
+	$('.rg-log-button').on('click', function(e) {
 		e.preventDefault();
 
 		var $button = $(this),
 			$buttonText = $($button.children('.rg-log-button-text')[0]),
-			$icon = $($button.children('.fa')[0]),
+			$icon = $($button.children('.rg-log-button-icon')[0]),
 
 			opening = !$button.hasClass('rg-button-toggled'),
 
