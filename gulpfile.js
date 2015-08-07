@@ -15,11 +15,16 @@ var gulp = require('gulp'),
 
 	destRoot = './build';
 
-gulp.task('build', ['html', 'js', 'libjs', 'css', 'libcss']);
+gulp.task('build', ['html', 'fonts', 'js', 'libjs', 'css', 'libcss']);
 
 gulp.task('html', function() {
 	return gulp.src('src/**/*.html')
 		.pipe(gulp.dest(destRoot));
+});
+
+gulp.task('fonts', function() {
+	return gulp.src('src/lib/fonts/**')
+		.pipe(gulp.dest(destRoot + '/fonts'));
 });
 
 gulp.task('js', function() {

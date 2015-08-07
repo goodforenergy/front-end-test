@@ -1,8 +1,11 @@
 <!doctype html>
 <html lang="en">
 	<head>
+	<title>Appointments for Mr Patient.</title>
+
 		<link rel="stylesheet" type="text/css" href="css/normalise.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class="rg-table-wrapper">
@@ -25,13 +28,23 @@
 		<script src="js/moment.min.js"></script>
 		<script id="table-content-templ" type="text/x-handlebars-template">
 			{{#each records}}
-				<tr class="rg-table-content-row">
-					<td data-title="When" class="rg-table-highlight">{{when}}</td>
-					<td data-title="Where">{{where}}</td>
-					<td data-title="Type">{{type}}</td>
-					<td data-title="Practitioner">{{practitioner}}</td>
-					<td data-title="Changes">
-						<button class="rg-table-toggle-log">View log</button>
+				<tr class="{{rowClassGenerator @index}}">
+					<td data-title="When" class="rg-table-highlight">
+						<span class="rg-table-cell-info">{{when}}</span>
+					</td>
+					<td data-title="Where">
+						<span class="rg-table-cell-info">{{where}}</span>
+					</td>
+					<td data-title="Type">
+						<span class="rg-table-cell-info">{{type}}</span>
+					</td>
+					<td data-title="Practitioner">
+						<span class="rg-table-cell-info">{{practitioner}}</span>
+					</td>
+					<td data-title="Changes" class="rg-table-expandy-cell">
+						<span class="rg-table-cell-info">
+						<button class="rg-table-toggle-log rg-secondary-button"><span class="rg-log-button-text">View log</span><i class="fa fa-angle-down"></i></button>
+						</span>
 					</td>
 				</tr>
 			{{/each}}
@@ -39,7 +52,9 @@
 
 		<script id="table-log-row-templ" type="text/x-handlebars-template">
 			<tr class="rg-table-log-row">
-				<td colspan="5">{{logInfo}}</td>
+				<td colspan="5">
+					<span class="rg-table-log-box">{{logInfo}}</span>
+				</td>
 			</tr>
 		</script>
 

@@ -2,7 +2,7 @@ $max-mobile: 45em;
 
 // Just to make the table easier to view
 .rg-table-wrapper {
-	margin: 0.5em;
+	margin: 2em;
 
 	@media (min-width: $max-mobile) {
 		margin: 5em;
@@ -20,10 +20,31 @@ $max-mobile: 45em;
 }
 
 body {
-	font-family: arial;
+	font-family: 'Lucida Grande', 'Verdana', sans-serif;
 	font-size: 13px;
 
 	color: rgba(58, 58, 58, 1);
+}
+
+.rg-secondary-button {
+	display: inline-block;
+	min-width: 100px;
+
+	padding: 6px 12px 6px 12px;
+
+	cursor: pointer;
+	text-decoration: none;
+	text-align: left;
+
+	color: #3a3a3a;
+	border: 1px solid #d5d5d5;
+	border-radius: 4px;
+	background-color: #f1f1f1;
+
+	.fa {
+		font-size: 1.3em;
+		float: right;
+	}
 }
 
 // Table styling
@@ -31,7 +52,6 @@ body {
 	width: 100%;
 
 	thead {
-		// Accessibly hide <thead> on narrow viewports
 		position: absolute;
 
 		overflow: hidden;
@@ -44,7 +64,6 @@ body {
 		border: 0;
 
 		@media (min-width: $max-mobile) {
-			// Unhide <thead> on wide viewports
 			position: relative;
 
 			overflow: auto;
@@ -76,7 +95,6 @@ body {
 		}
 	}
 
-	// Set these items to display: block for narrow viewports
 	tbody,
 	tr,
 	th,
@@ -90,6 +108,7 @@ body {
 	}
 
 	tr {
+
 		@media (min-width: $max-mobile) {
 			// Undo display: block
 			display: table-row;
@@ -101,7 +120,7 @@ body {
 		padding: .75em;
 
 		vertical-align: middle;
-		// TODO Padding
+
 		@media (min-width: $max-mobile) {
 			// Undo display: block
 			display: table-cell;
@@ -139,10 +158,11 @@ body {
 				// Undo display: block
 				display: table-row;
 			}
+		}
 
-			&:nth-of-type(even) {
-				background-color: rgba(248, 248, 248, 1);
-			}
+		// Can't use nth-of-type due to dynamically inserted log rows
+		.rg-table-row-odd {
+			background-color: rgba(248, 248, 248, 1);
 		}
 
 		td {
@@ -160,6 +180,7 @@ body {
 
 			content: attr(data-title);
 			text-transform: uppercase;
+			font-weight: 300;
 
 			color: rgba(28, 148, 220, 1);
 
@@ -173,6 +194,7 @@ body {
 
 .rg-table-highlight {
 	color: rgba(28, 148, 220, 1);
+	font-weight: 700;
 }
 
 // Log Styling
@@ -180,4 +202,57 @@ body {
 // Hidden by default
 .rg-table-log-content {
 	display: none;
+}
+
+.rg-table-expandy-cell {
+	// Works like min-height
+	height: 50px;
+}
+
+.rg-table-expandy-cell:before {
+	line-height: 31px;
+	display: inline-block;
+}
+
+.rg-table-log-box {
+	display: inline-block;
+	text-align: left;
+	max-height: 100px;
+	overflow-y: auto;
+	padding: 1em;
+	border: 1px solid #D5D5D5;
+	border-radius: 4px;
+	box-shadow: inset 0 15px 4px -8px #F4FAFD, inset 0 -15px 4px -8px #F4FAFD;
+}
+
+.rg-button-toggled {
+	color: white;
+	border: 1px solid #1680BF;
+	background-color: #1C94DC;
+}
+
+.rg-table tbody tr.rg-table-row-expanded {
+	border-bottom: none;
+}
+
+td {
+	position: relative;
+	height: 30px;
+}
+
+.rg-table-cell-info {
+	position: absolute;
+	left: 0;
+	margin-left: 150px;
+
+	@media (min-width: $max-mobile) {
+		margin-left: 0;
+		position: inherit;
+	}
+}
+
+.rg-table tbody .rg-table-log-row td {
+	height: 120px;
+
+	border-top: none;
 }

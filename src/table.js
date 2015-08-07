@@ -3,6 +3,10 @@
 
 (function($) {
 
+	Handlebars.registerHelper('rowClassGenerator', function(index) {
+		return index % 2 === 0 ? 'rg-table-content-row' : 'rg-table-content-row rg-table-row-odd';
+	});
+
 	var genericLogInfo = 'Butcher 90\'s PBR&B Marfa Banksy selvage gluten-free, next level kale chips small batch ' +
 		'cray swag umami. Bespoke chia fashion axe meh, brunch drinking vinegar street art Vice. Taxidermy migas sriracha' +
 		' tote bag, semiotics Odd Future Blue Bottle Echo Park Truffaut YOLO typewriter occupy locavore. Forage heirloom' +
@@ -67,17 +71,31 @@
 		e.preventDefault();
 
 		var $button = $(this),
-			opening = $button.text() === viewLogLabel,
+			$buttonText = $($button.children('.rg-log-button-text')[0]),
+			$icon = $($button.children('.fa')[0]),
+
+			opening = !$button.hasClass('rg-button-toggled'),
 
 			parentRow;
 
 		// Change label
-		$button.text(opening ? hideLogLabel : viewLogLabel);
+		$buttonText.text(opening ? hideLogLabel : viewLogLabel);
+		$button.toggleClass('rg-button-toggled');
+
+		// Change icon
+		$icon.toggleClass('fa-angle-down');
+		$icon.toggleClass('fa-angle-up');
 
 		parentRow = $button.parents('.rg-table-content-row');
+		parentRow.toggleClass('rg-table-row-expanded');
 
 		if (opening) {
 			parentRow.after(generatedLogContent);
+
+			if (parentRow.hasClass('rg-table-row-odd')) {
+				parentRow.next('.rg-table-log-row').addClass('rg-table-row-odd');
+			}
+
 		} else {
 			parentRow.next('.rg-table-log-row').remove();
 		}
